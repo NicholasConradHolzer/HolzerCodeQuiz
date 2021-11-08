@@ -16,3 +16,29 @@ footer {
 main {
     display: flex;
 }
+#prima-header {
+    background-color: aliceblue;
+}
+#startscreen {
+    background-color: antiquewhite;
+}
+#questionsscreen {
+    display: none;
+    background-color: beige;
+}
+#timesupscreen {
+    display: none;
+    background-color: aquamarine;
+}
+#endscreen{
+    display: none;
+    background-color: blanchedalmond;
+}
+#highscoresscreen{
+    display: none;
+    background-color: cornsilk;
+}
+#footeraknos {
+    display: inline-block;
+    margin: 0px;
+}
