@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code-Quiz: Primed and Timed</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="prima-header">
+        <button class="high-score-lnk">View Highscores</button>
+        <button id="return-to-home">Return to Start</button>
+        <div id="countdownTimer"></div>
+    </header>
+    <main>
+        <section class="questionsscreen">
+            <div class="questionask"></div>
+            <div class="questionanswers"></div>
+        </section>
+        <div class="timesupscreen">
+            <p>
+                Unfortunately your time is up; <br/>
+                you answered <span id="qcount"></span> out of 20 questions.
+            </p>
+        </div>
+        <div class="endscreen">
+            <form class="endgame">
+                <p>Your final score is <span></span></p>
+                <label for="savescore">Enter Initials: </label>
+                <input type="text" id="savescore" name="savescore" value="Your initials">
+                <input type="submit" value="save your score">
+            </form>
+        </div>
+        <div class="highscoresscreen"></div>
+    </main>
+    <footer>
+        <div class="footeraknos">
+            This website was made by Nicholas Holzer <br />
+            in studentship to Vanderbilt Coding-Bootcamp
+        </div>
+    </footer>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

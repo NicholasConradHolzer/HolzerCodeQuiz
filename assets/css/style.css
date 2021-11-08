@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+header {
+    position: absolute;
+    top: 0;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+main {
+    display: flex;
+}
