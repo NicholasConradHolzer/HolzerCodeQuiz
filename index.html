@@ -14,11 +14,15 @@
         <a href="index.html">Return to Start</a>
         <div id="countdownTimer"></div>
     </header>
+
+
     <main>
+
+
         <div id="startscreen">
             <h1>Code-Quiz</h1>
             <h2>Primed and Timed</h2>
-            <h3>Beta</h3>
+            <h3>Alpha Deployment</h3>
             <p>Practice your computer coding knowlege <br/>
             with this timed quiz.  The rules for the quiz are:</p>
                 <ul>
@@ -29,39 +33,62 @@
                 </ul>
             <button id="startQuiz">Start Quiz!</button>
         </div>
-        <section id="questionsscreen">
+
+
+        <section id="questionscreen">
             <article id="quizanoun">
                 <p>The Quiz will begin in <br/>
                     <span id="quizasec"></span> Seconds</p>
             </article>
-            <div id="questionask"></div>
-            <div id="questionanswer"></div>
+            <div class="questionAsk hide">
+                <p id=theQuestion></p>
+                <div id="theAnswers">
+                    <button class="answercard" id="ans1"></button>
+                    <button class="answercard" id="ans2"></button>
+                    <button class="answercard" id="ans3"></button>
+                    <button class="answercard" id="ans4"></button>
+                </div>
+                <div id="assess" class="hide"><p id="notify"></p></div>
+            </div>
         </section>
-        <div id="timesupscreen">
+
+
+        <div id="timesupscreen hide">
             <p>
                 Unfortunately your time is up; <br/>
-                you answered <span id="qcount"></span> out of 20 questions.
+                you answered <span id="qcount"></span> out of 20 questions.<br/>
             </p>
         </div>
-        <div id="endscreen">
+
+
+        <div id="endscreen hide">
             <form id="endgame">
-                <p>Your final score is <span></span></p>
+                <p>Your final score is <span id="finalScore"></span></p>
                 <label for="savescore">Enter Initials: </label>
-                <input type="text" id="savescore" name="savescore" value="">
-                <input type="submit" value="save your score">
+                <input type="text" id="savescore" name="savescore" placeholder="Your Initials">
+                <input id="sendIniti" type="submit" value="Save your Score!">
+                <span id="loseasec"></span>
             </form>
         </div>
+
+
         <div id="highscoresscreen">
             <h1 id="highscoretitle">Code-Quiz High Scores</h1>
             <div id="highdisplay"></div>
         </div>
+
+
     </main>
+
+
     <footer>
         <div id="footeraknos">
             This website was made by Nicholas Holzer <br />
             in studentship to Vanderbilt Coding-Bootcamp
         </div>
     </footer>
+
+
     <script src="assets/js/script.js"></script>
 </body>
 </html>

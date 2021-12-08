@@ -1,7 +1,27 @@
+'use strict';
+let postCount = 100;
+let preCount =document.getElementById('quizasec')
+let starter = document.getElementById('startQuiz')
+let timeCount = document.getElementById('countdownTimer')
+let startScreen = document.getElementById('startScreen')
 
-let questions = [
+let questionDisplay =document.querySelector('.questionAsk')
+let answer1 = document.getElementById('ans1')
+let answer2 = document.getElementById('ans2')
+let answer3 = document.getElementById('ans3')
+let answer4 = document.getElementById('ans4')
+
+let timesUp = document.getElementById('timesupscreen')
+let endForm = document.getElementById('endgame')
+let initialBtn = document.getElementById('sendIniti')
+let finalScore = document.getElementById('finalScore')
+let assess = document.getElementById('assess')
+let notify = document.getElementById('notify')
+let timerInterval = null;
+
+let questionsPossible = [
   {
-    numb: 1,
+    ord: 1,
     question: "Common data-types include all EXCEPT?",
     answer: "classes",
     options: [
@@ -12,7 +32,7 @@ let questions = [
     ]
   },
   {
-    numb: 2,
+    ord: 2,
     question: "What does the markup language (html) do on this website?",
     answer: "Host text-based content and provide formatting and integration for other forms of media to present content directly to the client.",
     options: [
@@ -23,7 +43,7 @@ let questions = [
     ]
   },
   {
-    numb: 3,
+    ord: 3,
     question: "What does the stylesheet language (css) do on this website?",
     answer: "Adds styling to the pages elements to provide aesthetic benefits, branding, or simplify certain formating choices.",
     options: [
@@ -34,7 +54,7 @@ let questions = [
     ]
   },
   {
-    numb: 4,
+    ord: 4,
     question: "What does the scripting language (javascript[js]) do on this website?",
     answer: "Allows designers to add additional functionality to the front end of a website such as drop down menus and realtime statistics from third parties.",
     options: [
@@ -45,7 +65,7 @@ let questions = [
     ]
   },
   {
-    numb: 5,
+    ord: 5,
     question: "How do you connect a live empty-gitHub repository in a local folder?",
     answer: "Go to directory of the local folder in the console (GitBash)>enter 'git init'>enter 'git remote add origin [git@github.url{yourname}]'",
     options: [
@@ -56,7 +76,7 @@ let questions = [
     ]
   },
   {
-    numb: 6,
+    ord: 6,
     question: "Which font is Apple machine browsing exclusive (as a design rule not a 100% always true fact)?",
     answer: "Helvettica",
     options: [
@@ -67,7 +87,7 @@ let questions = [
     ]
   },
   {
-    numb: 7,
+    ord: 7,
     question: "Now that I think about it; which font should be an Apple machine browsing exclusive (as a design rule not a 100% always true fact)?",
     answer: "macAttack",
     options: [
@@ -78,7 +98,7 @@ let questions = [
     ]
   },
   {
-    numb: 8,
+    ord: 8,
     question: "Who is indisputably the most important person in Vault 101: He who shelters us from the harshness of the atomic wasteland, and to whom we owe everything we have, including our lives?",
     answer: "The Overseer",
     options: [
@@ -89,59 +109,58 @@ let questions = [
     ]
   },
 ];
+function nextQuestion() {
+  let answerButton = this.innerText
+  answerCheck(answerButton)
 
-let questionOrder =  questions [Math.floor(Math.random()*questions.length)];
-console.log(questionOrder);
+  if(questionsIndex > questionsPossible.length - 1) {
+    questionDisplay.classList.add('hide')
+    result
+  }
+}
 
 
-//Quiz Countdown Timer
-var sec = 120;
-function quizTimer(){
-    QTSupreme = setInterval(countdownTimer, 100);
-    function countdownTimer () {
-        document.getElementById('countdownTimer').innerHTML = sec +" seconds remaining"
-        sec--;
-        if (sec<= 0){
-            clearInterval(QTSupreme);
-            timeUpScreen();
-        }
+function countDown() {
+  postCount--
+  timeCount.textContent = `${postCount}`
+  if (postCount < 0) {
+    postCount = 0;
+    timeCount.classList.add('hide')
+    questionDisplay.classList.add('hide') 
+
+    timesUp.classList.add('show')
+    timesUp.classList.remove('hide')
+  }
+}
+
+
+function answerCheck(answer) {
+  let notifyText=''
+  if (answer == questionsPossible[questionsIndex].answer) {
+    notifyText ='Correct!'
+    assess.classList.remove('hide')
+    notify.textContent = notifyText
+  } else {
+      notifyText = 'Incorrect.'
+      assess.classList.remove('hide')
+      postCount = postCount - 10
+      notify.textContent = notifyText
+    return postCount
     }
-}
-
-//Question Display
-var askQuestionsShow = document.querySelector("#questionask")
-function questionDisplay() {
-    var askQuestion = document.createElement("p");
-    askQuestion.className="question-card";
-    askQuestion.textContent=questions.question;
-};
-
-
-function beginQuiz(){
-    document.getElementById("quizanoun").style.display="none";
-    quizTimer();
-    questionDisplay();
+  setTimeout(() => {
+    assess.classList.add('hide')
+  }, 1000);
 }
 
 
-//precountdown to quiz
-var timeCount = 5;
-function preTimer(time){
-    preCount = setInterval(timer, 900);
-    function timer(){
-        if (timeCount <=0){
-            clearInterval(preCount);
-            beginQuiz();
-        } else {
-            document.getElementById("quizasec").innerHTML = timeCount;
-        }
-        timeCount -=1;
-    }
-}
-//Quiz Button Transitioner
-document.getElementById("startQuiz").addEventListener("click", function(){
-    document.getElementById("startscreen").style.display ="none";
-    document.getElementById("questionsscreen").style.display = "inline";
-    preTimer();
-});
 
+let playerIniti = document.querySelector('#savescore')
+function scoreKeep() {
+  let playerIniti = document.querySelector('#savescore')
+  localStorage.setItem("score", rightAnswers)
+  localStorage.setItem("initials", playerIniti.value)
+}
+
+initialBtn.addEventListener("click",scoreKeep)
+
+// debugger;
